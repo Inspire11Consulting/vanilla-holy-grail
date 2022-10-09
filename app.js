@@ -1,35 +1,69 @@
+// see app.css
+const SIDEBAR_WIDTH = 200;
+
 const leftSide = document.getElementsByTagName('nav')[0]
 const rightSide = document.getElementsByTagName('aside')[0]
 
-// var assignment via app.css
-// see (.hidden) property
-const COLLAPSED_NAME = 'hidden'
+function getElWidth(el) {
+  return el.getBoundingClientRect().width
+}
 
-const toggleLeftPanel = () => {
-  if (leftSide.classList.contains(COLLAPSED_NAME)) {
-    leftSide.classList.remove(COLLAPSED_NAME)
+function setElWidth(el, width) {
+  el.style.width = `${width}px`
+}
+
+function isHidden(el) {
+  var style = window.getComputedStyle(el);
+  return (style.display === 'none')
+}
+
+function toggleEl(el) {
+  if (isHidden(el)) {
+    el.style.display = 'block'
   } else {
-    leftSide.classList.add(COLLAPSED_NAME)
+    el.style.display = 'none'
   }
 }
-const toggleRightPanel = () => {
-  if (rightSide.classList.contains(COLLAPSED_NAME)) {
-    rightSide.classList.remove(COLLAPSED_NAME)
-  } else {
-    rightSide.classList.add(COLLAPSED_NAME)
-  }
+
+const toggleLeftSidebar = () => {
+  const width = getElWidth(leftSide) === 0 ? SIDEBAR_WIDTH : 0;
+  setElWidth(leftSide, width)
 }
+
+const toggleRightSidebar = () => {
+  const width = getElWidth(rightSide) === 0 ? SIDEBAR_WIDTH : 0;
+  setElWidth(rightSide, width)
+}
+
 
 const toggleSequence = () => {
-  toggleLeftPanel()
-  toggleRightPanel()
+  toggleLeftSidebar()
+  toggleRightSidebar()
 
   setTimeout(() => {
-    toggleLeftPanel()
+    toggleRightSidebar()
+  }, 1000)
+
+  setTimeout(() => {
+    toggleLeftSidebar()
+  }, 2000)
+
+  setTimeout(() => {
+    toggleRightSidebar()
   }, 3000)
 
   setTimeout(() => {
-    toggleRightPanel()
+    toggleLeftSidebar()
+  }, 4000)
+
+  setTimeout(() => {
+    toggleRightSidebar()
+  }, 5000)
+
+  setTimeout(() => {
+    toggleRightSidebar()
   }, 6000)
 }
-    // toggleSequence()
+
+// invoke this to view collapsing drawers in realtime
+// toggleSequence()

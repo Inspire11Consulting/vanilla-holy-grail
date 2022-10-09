@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-body > * {
+body > header,main,footer {
   padding: 10px;
 }
 
@@ -14,7 +14,7 @@ body > * {
     "nav main aside"
     "footer footer footer";
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: 66px 1fr 66px;
+  grid-template-rows: 75px 1fr 45px;
   height: 100vh;
 }
 
@@ -28,11 +28,15 @@ nav {
   background-color: gray;
   grid-area: nav;
   width: 200px;
+  transition: width .3s;
 }
 
-.hidden {
-    width: 0px;
-    display: none;
+nav > div {
+  padding: 10px;
+}
+
+aside > div {
+  padding: 10px;
 }
 
 aside {
@@ -40,6 +44,7 @@ aside {
   grid-area: aside;
   width: 200px;
   overflow-x: hidden;
+  transition: width .3s;
 }
 
 main {
