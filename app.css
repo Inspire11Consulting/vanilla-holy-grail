@@ -28,13 +28,10 @@ nav {
   background-color: gray;
   grid-area: nav;
   width: 200px;
-  transform: translate3d(0,0,200px);
-  transition: 0.3s ease-out;
 }
 
 .hidden {
     width: 0px;
-    transform: translate3d(0,0,0);
     display: none;
 }
 
@@ -42,6 +39,7 @@ aside {
   background-color: darkgray;
   grid-area: aside;
   width: 200px;
+  overflow-x: hidden;
 }
 
 main {
@@ -61,19 +59,4 @@ footer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-}
-
-/* ANIMATIONS */
-@keyframes closing {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 200px;
-  }
-}
-
-fade-closed {
-  animation: closing 1s ease-out;
 }
